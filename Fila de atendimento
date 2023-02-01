@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Projeto Fila de Atendimento</title>
+</head>
+
+<body>
+
+    <h1 style="text-align: center">Fila de Atendimento</h1>
+
+    Quantidade de pessoas na fila:
+    <p id="tamanhoFila"></p>
+    <p>
+
+        Última senha gerada:
+        <input id="senhaGerada" type="text" readonly><br>
+        <button onclick="gerarSenha()">Gerar senha</button>
+    <p>
+
+        <button onclick="atenderSenha()">Atender senha</button>
+    <p>
+        Última senha atendida:
+    <p id="senhaAtendida"></p>
+    <p>
+
+    <p>Listagem de senhas não atendidas:</p>
+    <p id="exibicao"></p>
+
+</body>
+
+<script>
+
+    senhas = new Array()
+
+    function gerarSenha() {
+
+        do {
+
+            senhasGerada = Math.floor(Math.random() * 100) + 1
+
+        } while (senhas.indexOf(senhasGerada) != -1)
+
+        document.getElementById("senhaGerada").value = senhasGerada
+
+        senhas.push(senhasGerada)
+
+        tamanhoFila.innerHTML = senhas.length
+
+        for (i= 0; i < senhas.length; i++) {
+
+            exibicao.innerHTML = senhas
+
+        }
+
+        imprimeVetor()
+
+    }
+
+    function atenderSenha() {
+
+        senhaAtendida.innerHTML = senhas.shift()
+
+        tamanhoFila.innerHTML = senhas.length 
+
+        for (i= 0; i < senhas.length; i++) {
+
+        exibicao.innerHTML = senhas
+
+        }
+
+        if (senhas.length == 0) {
+
+        tamanhoFila.innerHTML = "Fila Vazia"
+
+        exibicao.innerHTML = "Fila Vazia"
+        
+        senhaAtendida.innerHTML = "Fila Vazia"
+
+        }
+
+        imprimeVetor()
+
+    }
+
+    function imprimeVetor() {
+
+        exibicao.innerHTML = " ";
+
+		for (i = 0; i < senhas.length; i++) { 
+			exibicao.innerHTML = exibicao.innerHTML + (i + 1) + 
+			                     "ª senha: " + senhas[i] + "<br>";
+	    }
+
+    }
+
+</script>
+
+</html>
