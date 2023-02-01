@@ -1,2 +1,3 @@
 # Projetos
-Alguns projetos desenvolvidos no curso de Desenvolvimento de Sistemas
+
+Este projeto simula o sistema utilizado em um fila de atendimento.
